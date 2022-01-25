@@ -15670,7 +15670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 10
-  isGrounded: 1
+  isGrounded: 0
   renderer: {fileID: 668282492}
   _animator: {fileID: 0}
 --- !u!95 &668282497

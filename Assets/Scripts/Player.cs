@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     float dirX;
 
-    public SpriteRenderer renderer;
+    public SpriteRenderer spriteRenderer;
     public Animator _animator;
     Rigidbody2D _rBody;
 
@@ -30,15 +30,14 @@ public class Player : MonoBehaviour
 
         transform.position += new Vector3(dirX, 0, 0) * speed * Time.deltaTime;
         
-
         if(dirX == -1)
         {
-            renderer.flipX = true;
+            spriteRenderer.flipX = true;
             _animator.SetBool("Running", true);
         }
         else if(dirX == 1)
         {
-            renderer.flipX = false;
+            spriteRenderer.flipX = false;
             _animator.SetBool("Running", true);
         }
         else
