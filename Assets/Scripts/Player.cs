@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     public float speed = 5f;
     public float jumpForce = 10f;
 
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
 
         Debug.Log(dirX);
 
-        transform.position += new Vector3(dirX, 0, 0) * speed * Time.deltaTime;
+        //transform.position += new Vector3(dirX, 0, 0) * speed * Time.deltaTime;
         
         if(dirX == -1)
         {
@@ -49,6 +50,33 @@ public class Player : MonoBehaviour
         {
             _rBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _animator.SetBool("Jumping", true);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        _rBody.velocity = new Vector2(dirX * speed, _rBody.velocity.y);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        //Si el objeto que entra en el trigger tiene el tag de Goombas
+        /*if(collider.gameObject.CompareTag("Goombas"))
+        {
+            Debug.Log("Goomba muerto");
+        }*/
+
+        //si el objeto que entra en el trigger tiene la layer 6
+        if(collider.gameObject.layer == 6)
+        {
+            Debug.Log("Goomba muerto");
+            Destroy(collider.gameObject);
+        }
+
+        //Si el trigger entra en la deadzone
+        if(collider.gameObject.CompareTag("DeadZone"))
+        {
+            Debug.Log("Estoy muerto");
         }
     }
 }
