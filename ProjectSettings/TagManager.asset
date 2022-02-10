@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Goombas
   - DeadZone
+  - Pared
+  - MuereMario
   layers:
   - Default
   - TransparentFX

@@ -15548,7 +15548,7 @@ GameObject:
   - component: {fileID: 668282497}
   m_Layer: 0
   m_Name: Mario
-  m_TagString: Untagged
+  m_TagString: MuereMario
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26265,7 +26265,7 @@ GameObject:
   - component: {fileID: 1131545857}
   m_Layer: 0
   m_Name: Tuberias_1 (1)
-  m_TagString: Untagged
+  m_TagString: Pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27166,7 +27166,7 @@ GameObject:
   - component: {fileID: 1158424206}
   m_Layer: 0
   m_Name: Tuberias_2
-  m_TagString: Untagged
+  m_TagString: Pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31807,6 +31807,7 @@ GameObject:
   - component: {fileID: 1333579249}
   - component: {fileID: 1333579248}
   - component: {fileID: 1333579247}
+  - component: {fileID: 1333579251}
   m_Layer: 6
   m_Name: Goombas_0
   m_TagString: Goombas
@@ -31920,12 +31921,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333579246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0291061, y: -2.0600019, z: 0}
+  m_LocalPosition: {x: 22.39, y: -2.0600019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1333579251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333579246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e9126fb1afdfd43aca31d7b4b82455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4.5
 --- !u!1 &1335360885
 GameObject:
   m_ObjectHideFlags: 0
@@ -33360,7 +33374,7 @@ GameObject:
   - component: {fileID: 1391258827}
   m_Layer: 0
   m_Name: "TuberiaPeque\xF1a"
-  m_TagString: Untagged
+  m_TagString: Pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
