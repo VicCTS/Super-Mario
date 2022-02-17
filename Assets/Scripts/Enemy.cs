@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     //variable para almacener el rigidbody del enemigo
     private Rigidbody2D rigidBody;
 
+    //variable para saber si el goomba esta muerto
+    public bool isAlive = true;
+
     
     private void Awake()
     {
@@ -21,14 +24,21 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Añade velocidad en el eje x
-        rigidBody.velocity = new Vector2(directionX * speed, rigidBody.velocity.y);
+        if(isAlive)
+        {
+            //Añade velocidad en el eje x
+            rigidBody.velocity = new Vector2(directionX * speed, rigidBody.velocity.y);
+        }
+        else
+        {
+            rigidBody.velocity = Vector2.zero;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D hit)
     {
         //si detecta collision con un objeto con tag Pared
-        if(hit.gameObject.tag == "Pared")
+        if(hit.gameObject.tag == "Pared" || hit.gameObject.tag == "Goombas")
         {
             Debug.Log("me he chocado");
 

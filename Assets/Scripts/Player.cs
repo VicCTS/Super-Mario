@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    //variables para la velocidad y fuerza de salto
     public float speed = 5f;
     public float jumpForce = 10f;
-
+    //variable para saber si estamos en el suelo
     public bool isGrounded;
-
+    //variable para almacenar el input de movimiento
     float dirX;
-
+    
+    //variables de componentes
     public SpriteRenderer spriteRenderer;
     public Animator _animator;
     Rigidbody2D _rBody;
+    private GameManager gameManager;
+
 
     void Awake()
     {
+        //asiganamos los componentes a las variables
         _animator = GetComponent<Animator>();
         _rBody = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -70,7 +75,8 @@ public class Player : MonoBehaviour
         if(collider.gameObject.layer == 6)
         {
             Debug.Log("Goomba muerto");
-            Destroy(collider.gameObject);
+            //llamamos a la funcion DeathGoomba del script GameManager
+            gameManager.DeathGoomba(collider.gameObject);
         }
 
         //Si el trigger entra en la deadzone
