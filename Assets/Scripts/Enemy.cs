@@ -15,10 +15,13 @@ public class Enemy : MonoBehaviour
     //variable para saber si el goomba esta muerto
     public bool isAlive = true;
 
+    private GameManager gameManager;
+
     
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class Enemy : MonoBehaviour
         else if(hit.gameObject.tag == "MuereMario")
         {
             Destroy(hit.gameObject);
+            gameManager.DeathMario();
         }
     }
 

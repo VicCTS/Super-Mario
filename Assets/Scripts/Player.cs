@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
         if(collider.gameObject.CompareTag("DeadZone"))
         {
             Debug.Log("Estoy muerto");
+            gameManager.DeathMario();
         }
     }
 }

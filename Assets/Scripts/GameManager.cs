@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //MAnagers de sonido
+    private SFXManager sfxManager;
+    private BGMManager bgmManager;
+
+    void Awake()
+    {
+        sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+        bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
+    }
+
+
+    public void DeathMario()
+    {
+        sfxManager.DeathSound();
+        bgmManager.StopBGM();
+    }
+
+
+
     //Funcion para matar goombas
     public void DeathGoomba(GameObject goomba)
     {
@@ -34,5 +53,8 @@ public class GameManager : MonoBehaviour
 
         //destruimos el goomba
         Destroy(goomba, 0.3f);
+
+        //llamamos la funcion del sonido de muerte del goomba
+        sfxManager.GoombaSound();
     }
 }
