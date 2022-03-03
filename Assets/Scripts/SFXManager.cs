@@ -8,6 +8,8 @@ public class SFXManager : MonoBehaviour
     public AudioClip deathSFX;
     //clip de audio muerte goomba
     public AudioClip goombaSFX;
+    //clip para el audio de la moneda
+    public AudioClip monedaSFX;
 
 
     //Variable del audio source
@@ -26,5 +28,10 @@ public class SFXManager : MonoBehaviour
     public void GoombaSound()
     {
         _audioSource.PlayOneShot(goombaSFX);
+    }
+
+    public void MonedaSound()
+    {
+        _audioSource.PlayOneShot(monedaSFX);
     }
 }

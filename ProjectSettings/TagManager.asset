@@ -8,6 +8,7 @@ TagManager:
   - DeadZone
   - Pared
   - MuereMario
+  - Coin
   layers:
   - Default
   - TransparentFX

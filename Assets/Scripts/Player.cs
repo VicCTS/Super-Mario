@@ -85,5 +85,10 @@ public class Player : MonoBehaviour
             Debug.Log("Estoy muerto");
             gameManager.DeathMario();
         }
+
+        if(collider.gameObject.tag == "Coin")
+        {
+            gameManager.Coin(collider.gameObject);
+        }
     }
 }

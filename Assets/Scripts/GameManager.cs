@@ -57,4 +57,10 @@ public class GameManager : MonoBehaviour
         //llamamos la funcion del sonido de muerte del goomba
         sfxManager.GoombaSound();
     }
+
+    public void Coin(GameObject moneda)
+    {
+        Destroy(moneda);
+        sfxManager.MonedaSound();
+    }
 }
