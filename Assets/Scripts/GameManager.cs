@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     //MAnagers de sonido
     private SFXManager sfxManager;
     private BGMManager bgmManager;
+
+    //variable para almacenar cantidad de monedas
+    private int coins;
+    //variable para el texto de monedas del canvas
+    public Text coinsText;
 
     void Awake()
     {
@@ -62,5 +68,7 @@ public class GameManager : MonoBehaviour
     {
         Destroy(moneda);
         sfxManager.MonedaSound();
+        coins++;
+        coinsText.text = "Coins: " + coins;
     }
 }
