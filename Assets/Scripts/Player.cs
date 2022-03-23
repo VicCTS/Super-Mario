@@ -18,6 +18,13 @@ public class Player : MonoBehaviour
     Rigidbody2D _rBody;
     private GameManager gameManager;
 
+    public GameObject prefab;
+    public Transform launcher;
+
+    private bool canShoot = true;
+    public float waitTime = 1f;
+    public float timer = 0;
+
 
     void Awake()
     {
@@ -38,13 +45,15 @@ public class Player : MonoBehaviour
         
         if(dirX == -1)
         {
-            spriteRenderer.flipX = true;
+            //spriteRenderer.flipX = true;
+            transform.rotation = Quaternion.Euler(0,180,0);
             _animator.SetBool("Running", true);
         }
         else if(dirX == 1)
         {
-            spriteRenderer.flipX = false;
+            //spriteRenderer.flipX = false;
             _animator.SetBool("Running", true);
+            transform.rotation = Quaternion.Euler(0,0,0);
         }
         else
         {
@@ -55,6 +64,25 @@ public class Player : MonoBehaviour
         {
             _rBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _animator.SetBool("Jumping", true);
+        }
+
+        if(Input.GetButtonDown("Fire1") && canShoot)
+        {
+            GameObject bullet = Instantiate(prefab, launcher.position, launcher.rotation);
+            canShoot = false;
+        }
+
+        if(!canShoot)
+        {
+            if(timer <= waitTime)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                canShoot = true;
+                timer = 0f;
+            }
         }
     }
 
