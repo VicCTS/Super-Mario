@@ -18,13 +18,10 @@ public class Player : MonoBehaviour
     Rigidbody2D _rBody;
     private GameManager gameManager;
 
-    public GameObject prefab;
-    public Transform launcher;
-
-    private bool canShoot = true;
-    public float waitTime = 1f;
-    public float timer = 0;
-
+    //prefab de la bala
+    public GameObject bulletPref;
+    //posicion desde la que se dispara la bala
+    public Transform bulletSpawn;
 
     void Awake()
     {
@@ -46,14 +43,17 @@ public class Player : MonoBehaviour
         if(dirX == -1)
         {
             //spriteRenderer.flipX = true;
+            //rotamos el personaje 180 grados
             transform.rotation = Quaternion.Euler(0,180,0);
             _animator.SetBool("Running", true);
         }
         else if(dirX == 1)
         {
             //spriteRenderer.flipX = false;
-            _animator.SetBool("Running", true);
+            //volvemos a poner el personaje en su rotacion original
             transform.rotation = Quaternion.Euler(0,0,0);
+            _animator.SetBool("Running", true);
+            
         }
         else
         {
@@ -66,23 +66,9 @@ public class Player : MonoBehaviour
             _animator.SetBool("Jumping", true);
         }
 
-        if(Input.GetButtonDown("Fire1") && canShoot)
+        if(Input.GetButtonDown("Fire1") && gameManager.shootPowerUp == true)
         {
-            GameObject bullet = Instantiate(prefab, launcher.position, launcher.rotation);
-            canShoot = false;
-        }
-
-        if(!canShoot)
-        {
-            if(timer <= waitTime)
-            {
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                canShoot = true;
-                timer = 0f;
-            }
+            Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation);
         }
     }
 
@@ -117,6 +103,14 @@ public class Player : MonoBehaviour
         if(collider.gameObject.tag == "Coin")
         {
             gameManager.Coin(collider.gameObject);
+        }
+
+        if(collider.gameObject.tag == "BulletPowerUp")
+        {
+            //destruimos el power up
+            Destroy(collider.gameObject);
+            //activamos el power up
+            gameManager.shootPowerUp = true;
         }
     }
 }
