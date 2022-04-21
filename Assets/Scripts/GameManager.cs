@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,6 +49,12 @@ public class GameManager : MonoBehaviour
     {
         sfxManager.DeathSound();
         bgmManager.StopBGM();
+        Invoke("LoadMainMenu", 3);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 
