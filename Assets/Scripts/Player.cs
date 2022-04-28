@@ -23,6 +23,13 @@ public class Player : MonoBehaviour
     //posicion desde la que se dispara la bala
     public Transform bulletSpawn;
 
+    //posicion del hitbox
+    public Transform attackHitBox;
+    //rango de ataque
+    public float attackRange;
+    //layer del enemigo
+    public LayerMask enemyLayer; 
+
     void Awake()
     {
         //asiganamos los componentes a las variables
@@ -66,10 +73,38 @@ public class Player : MonoBehaviour
             _animator.SetBool("Jumping", true);
         }
 
-        if(Input.GetButtonDown("Fire1") && gameManager.shootPowerUp == true)
+        /*if(Input.GetButtonDown("Fire1") && gameManager.shootPowerUp == true)
         {
             Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation);
+        }*/
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Attack();
         }
+    }
+
+    public void Attack()
+    {
+        //Creamos un array con los enemigos que detecte dentro de la esfera
+        Collider2D[] attackedEnemies = Physics2D.OverlapCircleAll(attackHitBox.position, attackRange, enemyLayer);
+
+        //destruye cada enemigo dentro del array con un bucle
+        foreach(Collider2D enemy in attackedEnemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+
+        if( attackedEnemies != null)
+        {
+            //Aqui codigo de la animacion
+        }
+    }
+
+    //funcion para dibujar un gizmo de la esfera
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackHitBox.position, attackRange);
     }
 
     void FixedUpdate()

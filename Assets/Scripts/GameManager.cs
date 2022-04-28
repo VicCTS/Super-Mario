@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     //tiempo transcurrido con el power up activado
     public float shootTimer = 0f;
 
+    public List<GameObject> enemiesInScreen = new List<GameObject>();
+
     void Awake()
     {
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
@@ -42,6 +44,39 @@ public class GameManager : MonoBehaviour
                 shootTimer = 0f;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            KillAllEnemies();
+        }
+    }
+
+    void KillAllEnemies()
+    {
+        /*for(int i = 0; i < enemiesInScreen.Count; i++)
+        {
+            Destroy(enemiesInScreen[i]);
+        }*/
+
+        /*int i = 0; 
+        while(i < enemiesInScreen.Count)
+        {
+            Destroy(enemiesInScreen[i]);
+            i++;
+        }*/
+
+        /*int i = 0;
+        do
+        {
+            Destroy(enemiesInScreen[i]);
+            i++;
+        }while(i < enemiesInScreen.Count);*/
+
+        foreach(GameObject enemy in enemiesInScreen)
+        {
+            Destroy(enemy);
+        }
+
     }
 
 

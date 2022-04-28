@@ -38,6 +38,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void OnBecameVisible()
+    {
+        gameManager.enemiesInScreen.Add(this.gameObject);
+    }
+
+    void OnBecameInvisible()
+    {
+        gameManager.enemiesInScreen.Remove(this.gameObject);
+    }
+
     private void OnCollisionEnter2D(Collision2D hit)
     {
         //si detecta collision con un objeto con tag Pared
