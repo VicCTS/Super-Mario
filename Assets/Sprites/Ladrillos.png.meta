@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -292,6 +293,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Ladrillos_1: 910114455661002493
+      Ladrillos_7: 5897783384185127439
+      Ladrillos_3: 3034615638488021777
+      Ladrillos_5: 7222269488976561104
+      Ladrillos_0: 1069114306616811980
+      Ladrillos_4: -6104995135466407060
+      Ladrillos_6: 151788639967503970
+      Ladrillos_2: -5024462216136768697
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
